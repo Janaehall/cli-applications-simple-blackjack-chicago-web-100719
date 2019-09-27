@@ -28,8 +28,23 @@ def initial_round
   round
 end
 
+def invalid_command
+  puts "Please enter a valid command"
+end
+
 def hit?
-  # code hit? here
+  prompt_user
+  ans = get_user_input
+  valid_inputs  = ["s", "h"]
+  until valid_inputs.include?(ans)
+    invalid_command
+    prompt_user
+    ans = get_user_input
+  end
+  if ans == "h"
+    card_total += deal_card
+  end
+  card_total
 end
 
 def invalid_command
